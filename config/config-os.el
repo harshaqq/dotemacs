@@ -24,10 +24,9 @@
 
 (when (eq system-type 'darwin)
   (require-package 'osx-trash)
+  (setq mac-command-modifier 'meta)
   (osx-trash-setup)
-
-  (require-package 'reveal-in-osx-finder)
-  (require-package 'vkill))
+  (require-package 'reveal-in-osx-finder))
 
 (defun /os/reveal-in-os ()
   (interactive)

@@ -37,7 +37,6 @@
           (const :tag "evil-nerd-commenter" evil-nerd-commenter)
           (const :tag "evil-commentary" evil-commentary))
   :group 'dotemacs-evil)
-
 
 
 (setq evil-search-module 'evil-search)
