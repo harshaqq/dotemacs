@@ -54,6 +54,6 @@
         smtpmail-smtp-service 587)
 
   ;; don't keep message buffers around
-  (setq message-kill-buffer-on-exit t)
+  (setq message-kill-buffer-on-exit t))
 
-  (provide 'config-mu4e)
+(provide 'config-mu4e)
