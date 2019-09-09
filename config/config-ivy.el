@@ -9,6 +9,7 @@
 
 
 (require-package 'swiper)
+(require-package 'swiper-helm)
 (after 'swiper
   (defadvice swiper (before dotemacs activate)
     (setq gc-cons-threshold most-positive-fixnum))
