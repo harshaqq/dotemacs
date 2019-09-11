@@ -2,7 +2,6 @@
        (progn
          (print "* Starting exwm *")
          (require-package 'exwm)
-         (setq exwm-workspace-number 4)
 
          ;; All buffers created in EXWM mode are named "*EXWM*". You may want to
          ;; change it in `exwm-update-class-hook' and `exwm-update-title-hook', which
@@ -53,7 +52,7 @@
 
          ;; To add a key binding only available in line-mode, simply define it in
          ;; `exwm-mode-map'.  The following example shortens 'C-c q' to 'C-q'.
-         (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
+         ;; (define-key exwm-mode-map [?\C-q] #'exwm-input-send-next-key)
 
          ;; The following example demonstrates how to use simulation keys to mimic
          ;; the behavior of Emacs.  The value of `exwm-input-simulation-keys` is a
@@ -84,10 +83,16 @@
 
          ;; You can hide the minibuffer and echo area when they're not used, by
          ;; uncommenting the following line.
-                                        ;(setq exwm-workspace-minibuffer-position 'bottom)
+         ;; (setq exwm-workspace-minibuffer-position 'top)
 
+         ;;(setq exwm-workspace-minibuffer-position 'bottom)
+;;         (setq exwm-workspace-display-echo-area-timeout 3)         
          ;; Do not forget to enable EXWM. It will start by itself when things are
          ;; ready.  You can put it _anywhere_ in your configuration.
-         (exwm-enable))))
+         ;;(require 'exwm-systemtray)
+         ;;(exwm-systemtray-enable)
+         (require 'exwm)
+         (exwm-init)
+         )))
 
 (provide 'config-exwm)

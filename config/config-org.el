@@ -306,23 +306,23 @@
   (setq org-agenda-tag-filter-preset (quote ("-drill")))
 
   ;; Keep tasks with dates on the global todo lists
-  (setq org-agenda-todo-ignore-with-date nil)
+  ;; (setq org-agenda-todo-ignore-with-date nil)
 
   ;; Keep tasks with deadlines on the global todo lists
-  (setq org-agenda-todo-ignore-deadlines nil)
+  ;; (setq org-agenda-todo-ignore-deadlines nil)
 
   ;; Keep tasks with scheduled dates on the global todo lists
-  (setq org-agenda-todo-ignore-scheduled nil)
+  ;; (setq org-agenda-todo-ignore-scheduled nil)
 
   ;; Keep tasks with timestamps on the global todo lists
-  (setq org-agenda-todo-ignore-timestamp nil)
+  ;; (setq org-agenda-todo-ignore-timestamp nil)
 
   ;; Remove completed deadline tasks from the agenda view
   (setq org-agenda-skip-deadline-if-done t)
 
   ;; Remove completed scheduled tasks from the agenda view
   (setq org-agenda-skip-scheduled-if-done t)
-
+  
   ;; Remove completed items from search results
   (setq org-agenda-skip-timestamp-if-done t)       
   ;; Compact blocks
@@ -337,14 +337,15 @@
 	    'append)
 
   ;; The following custom-set-faces create the highlights
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))              
+  ;; (custom-set-faces
+  ;;  ;; custom-set-faces was added by Custom.
+  ;;  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;;  ;; Your init file should contain only one such instance.
+  ;;  ;; If there is more than one, they won't work right.
+  ;;  '(org-mode-line-clock ((t (:background "grey75" :foreground "red" :box (:line-width -1 :style released-button)))) t))              
 
-  ;; (require-package 'ob-go)
+  ;; (require-package 'org-plus-contrib)
+  ;; (require-package 'ob-go)      
   ;; (require-package 'ob-restclient)
   ;; (require-package 'ob-html-chrome)
   ;; (require-package 'ob-typescript);
@@ -375,8 +376,6 @@
   ;;    (typescript . t)
   ;;    (tmux . t)
   ;;    (emacs-lisp . t)))
-
-
 
   ;; Show all future entries for repeating tasks
   (setq org-agenda-repeating-timestamp-show-all t)
@@ -584,330 +583,330 @@
   ;; Show lot of clocking history so it's easy to pick items off the C-F11 list
   (setq org-clock-history-length 23)
 
-  "Move point to the parent (project) task if any"
-  ;; (save-restriction
-  ;;     (widen)
-  ;;     (let ((parent-task (save-excursion (org-back-to-heading 'invisible-ok) (point))))
-  ;;       (while (org-up-heading-safe)
-  ;;         (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
-  ;;           (setq parent-task (point))))
-  ;;       (goto-char parent-task)
-  ;;       parent-task)))
+;;   ;; "Move point to the parent (project) task if any"
+;;   (save-restriction
+;;     (widen)
+;;     (let ((parent-task (save-excursion (org-back-to-heading 'invisible-ok) (point))))
+;;       (while (org-up-heading-safe)
+;;         (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
+;;           (setq parent-task (point))))
+;;       (goto-char parent-task)
+;;       parent-task)))
 
-  ;;   (defun bh/punch-in (arg)
-  ;;     "Start continuous clocking and set the default task to the
-  ;; selected task.  If no task is selected set the Organization task
-  ;; as the default task."
-  ;;     (interactive "p")
-  ;;     (setq bh/keep-clock-running t)
-  ;;     (if (equal major-mode 'org-agenda-mode)
-  ;;         ;;
-  ;;         ;; We're in the agenda
-  ;;         ;;
-  ;;         (let* ((marker (org-get-at-bol 'org-hd-marker))
-  ;;                (tags (org-with-point-at marker (org-get-tags-at))))
-  ;;           (if (and (eq arg 4) tags)
-  ;;               (org-agenda-clock-in '(16))
-  ;;             (bh/clock-in-organization-task-as-default)))
-  ;;       ;;
-  ;;       ;; We are not in the agenda
-  ;;       ;;
-  ;;       (save-restriction
-  ;;         (widen)
-  ;; 					; Find the tags on the current task
-  ;;         (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
-  ;;             (org-clock-in '(16))
-  ;;           (bh/clock-in-organization-task-as-default)))))
+;; (defun bh/punch-in (arg)
+;;   "Start continuous clocking and set the default task to the
+;;   selected task.  If no task is selected set the Organization task
+;;   as the default task."
+;;   (interactive "p")
+;;   (setq bh/keep-clock-running t)
+;;   (if (equal major-mode 'org-agenda-mode)
+;;       ;;
+;;       ;; We're in the agenda
+;;       ;;
+;;       (let* ((marker (org-get-at-bol 'org-hd-marker))
+;;              (tags (org-with-point-at marker (org-get-tags-at))))
+;;         (if (and (eq arg 4) tags)
+;;             (org-agenda-clock-in '(16))
+;;           (bh/clock-in-organization-task-as-default)))
+;;     ;;
+;;     ;; We are not in the agenda
+;;     ;;
+;;     (save-restriction
+;;       (widen)
+;;   					; Find the tags on the current task
+;;       (if (and (equal major-mode 'org-mode) (not (org-before-first-heading-p)) (eq arg 4))
+;;           (org-clock-in '(16))
+;;         (bh/clock-in-organization-task-as-default)))))
 
-  ;;   (defun bh/punch-out ()
-  ;;     (interactive)
-  ;;     (setq bh/keep-clock-running nil)
-  ;;     (when (org-clock-is-active)
-  ;;       (org-clock-out))
-  ;;     (org-agenda-remove-restriction-lock))
+;; (defun bh/punch-out ()
+;;   (interactive)
+;;   (setq bh/keep-clock-running nil)
+;;   (when (org-clock-is-active)
+;;     (org-clock-out))
+;;   (org-agenda-remove-restriction-lock))
 
-  ;;   (defun bh/clock-in-default-task ()
-  ;;     (save-excursion
-  ;;       (org-with-point-at org-clock-default-task
-  ;;         (org-clock-in))))
+;; (defun bh/clock-in-default-task ()
+;;   (save-excursion
+;;     (org-with-point-at org-clock-default-task
+;;       (org-clock-in))))
 
-  ;;   (defun bh/clock-in-parent-task ()
-  ;;     "Move point to the parent (project) task if any and clock in"
-  ;;     (let ((parent-task))
-  ;;       (save-excursion
-  ;;         (save-restriction
-  ;;           (widen)
-  ;;           (while (and (not parent-task) (org-up-heading-safe))
-  ;;             (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
-  ;;               (setq parent-task (point))))
-  ;;           (if parent-task
-  ;;               (org-with-point-at parent-task
-  ;;                 (org-clock-in))
-  ;;             (when bh/keep-clock-running
-  ;;               (bh/clock-in-default-task)))))))
+;; (defun bh/clock-in-parent-task ()
+;;   "Move point to the parent (project) task if any and clock in"
+;;   (let ((parent-task))
+;;     (save-excursion
+;;       (save-restriction
+;;         (widen)
+;;         (while (and (not parent-task) (org-up-heading-safe))
+;;           (when (member (nth 2 (org-heading-components)) org-todo-keywords-1)
+;;             (setq parent-task (point))))
+;;         (if parent-task
+;;             (org-with-point-at parent-task
+;;               (org-clock-in))
+;;           (when bh/keep-clock-running
+;;             (bh/clock-in-default-task)))))))
 
-  ;;   (defvar bh/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
+;; (defvar bh/organization-task-id "eb155a82-92b2-4f25-a3c6-0304591af2f9")
 
-  ;;   (defun bh/clock-in-organization-task-as-default ()
-  ;;     (interactive)
-  ;;     (org-with-point-at (org-id-find bh/organization-task-id 'marker)
-  ;;       (org-clock-in '(16))))
+;; (defun bh/clock-in-organization-task-as-default ()
+;;   (interactive)
+;;   (org-with-point-at (org-id-find bh/organization-task-id 'marker)
+;;     (org-clock-in '(16))))
 
-  ;;   (defun bh/clock-out-maybe ()
-  ;;     (when (and bh/keep-clock-running
-  ;;                (not org-clock-clocking-in)
-  ;;                (marker-buffer org-clock-default-task)
-  ;;                (not org-clock-resolving-clocks-due-to-idleness))
-  ;;       (bh/clock-in-parent-task)))
+;; (defun bh/clock-out-maybe ()
+;;   (when (and bh/keep-clock-running
+;;              (not org-clock-clocking-in)
+;;              (marker-buffer org-clock-default-task)
+;;              (not org-clock-resolving-clocks-due-to-idleness))
+;;     (bh/clock-in-parent-task)))
 
-  ;;   (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)       
+;; (add-hook 'org-clock-out-hook 'bh/clock-out-maybe 'append)       
 
-  ;;   (require 'org-id)
-  ;;   (defun bh/clock-in-task-by-id (id)
-  ;;     "Clock in a task by id"
-  ;;     (org-with-point-at (org-id-find id 'marker)
-  ;;       (org-clock-in nil)))
+;; (require 'org-id)
+;; (defun bh/clock-in-task-by-id (id)
+;;   "Clock in a task by id"
+;;   (org-with-point-at (org-id-find id 'marker)
+;;     (org-clock-in nil)))
 
-  ;;   (defun bh/clock-in-last-task (arg)
-  ;;     "Clock in the interrupted task if there is one
-  ;; Skip the default task and get the next one.
-  ;; A prefix arg forces clock in of the default task."
-  ;;     (interactive "p")
-  ;;     (let ((clock-in-to-task
-  ;;            (cond
-  ;;             ((eq arg 4) org-clock-default-task)
-  ;;             ((and (org-clock-is-active)
-  ;;                   (equal org-clock-default-task (cadr org-clock-history)))
-  ;;              (caddr org-clock-history))
-  ;;             ((org-clock-is-active) (cadr org-clock-history))
-  ;;             ((equal org-clock-default-task (car org-clock-history)) (cadr org-clock-history))
-  ;;             (t (car org-clock-history)))))
-  ;;       (widen)
-  ;;       (org-with-point-at clock-in-to-task
-  ;;         (org-clock-in nil))))
+;; (defun bh/clock-in-last-task (arg)
+;;   "Clock in the interrupted task if there is one
+;;   Skip the default task and get the next one.
+;;   A prefix arg forces clock in of the default task."
+;;   (interactive "p")
+;;   (let ((clock-in-to-task
+;;          (cond
+;;           ((eq arg 4) org-clock-default-task)
+;;           ((and (org-clock-is-active)
+;;                 (equal org-clock-default-task (cadr org-clock-history)))
+;;            (caddr org-clock-history))
+;;           ((org-clock-is-active) (cadr org-clock-history))
+;;           ((equal org-clock-default-task (car org-clock-history)) (cadr org-clock-history))
+;;           (t (car org-clock-history)))))
+;;     (widen)
+;;     (org-with-point-at clock-in-to-task
+;;       (org-clock-in nil))))
+        
+;;   ;;  I always check that I haven't created task overlaps when fixing time clock entries by viewing them with log mode on in the agenda. There is a new view in the agenda for this – just hit v c in the daily agenda and clock gaps and overlaps are identified.
 
-  ;;   ;;  I always check that I haven't created task overlaps when fixing time clock entries by viewing them with log mode on in the agenda. There is a new view in the agenda for this – just hit v c in the daily agenda and clock gaps and overlaps are identified.
+;;   ;; I want my clock entries to be as accurate as possible.
 
-  ;;   ;; I want my clock entries to be as accurate as possible.
+;;   ;; The following setting shows 1 minute clocking gaps. 
 
-  ;;   ;; The following setting shows 1 minute clocking gaps. 
+(setq org-time-stamp-rounding-minutes (quote (1 1)))
 
-  ;;   (setq org-time-stamp-rounding-minutes (quote (1 1)))
+(setq org-agenda-clock-consistency-checks
+      (quote (:max-duration "4:00"
+                            :min-duration 0
+                            :max-gap 0
+                            j			    :gap-ok-around ("4:00"))))
 
-  ;;   (setq org-agenda-clock-consistency-checks
-  ;;         (quote (:max-duration "4:00"
-  ;;                               :min-duration 0
-  ;;                               :max-gap 0
-  ;;                               j			    :gap-ok-around ("4:00"))))
+;;   ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
+(setq org-clock-out-remove-zero-time-clocks t)       
 
-  ;;   ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
-  ;;   (setq org-clock-out-remove-zero-time-clocks t)       
+(setq org-columns-default-format "%80ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM")
+;; (setq org-columns-default-format "%81ITEM(Task) %10EffortDate: Tue, 10 Sep 2019 14:49:23 +0530
+(setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00 9:00 9:30")
+                                    ("STYLE_ALL" . "habit"))))
 
-  ;;   (setq org-columns-default-format "%80ITEM(Task) %10Effort(Effort){:} %10CLOCKSUM")
-  ;;   (setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 7:00 8:00 9:00 9:30")
-  ;;                                       ("STYLE_ALL" . "habit"))))
+;;   ;; Agenda clock report parameters
+;;   (setq org-agenda-clockreport-parameter-plist
+;;         (quote (:link t :maxlevel 5 :fileskip0 t :compact t :narrow 80)))
 
-  ;;   ;; Agenda clock report parameters
-  ;;   (setq org-agenda-clockreport-parameter-plist
-  ;;         (quote (:link t :maxlevel 5 :fileskip0 t :compact t :narrow 80)))
+;;   (require 'org-protocol)
 
-  ;;   (require 'org-protocol)
-
-  ;;   ;; Standard key bindings
-
-
-  ;;   (if (> (string-to-number (org-version)) 9.1)
-  ;;       (require 'org-tempo))
-
-  ;;   (defun bh/hide-other ()
-  ;;     (interactive)
-  ;;     (save-excursion
-  ;;       (org-back-to-heading 'invisible-ok)
-  ;;       (hide-other)
-  ;;       (org-cycle)
-  ;;       (org-cycle)
-  ;;       (org-cycle)))
-
-  ;;   (defun bh/set-truncate-lines ()
-  ;;     "Toggle value of truncate-lines and refresh window display."
-  ;;     (interactive)
-  ;;     (setq truncate-lines (not truncate-lines))
-  ;;     ;; now refresh window display (an idiom from simple.el):
-  ;;     (save-excursion
-  ;;       (set-window-start (selected-window)
-  ;;                         (window-start (selected-window)))))
-
-  ;;   (defun bh/make-org-scratch ()
-  ;;     (interactive)
-  ;;     (find-file "/tmp/publish/scratch.org")
-  ;;     (gnus-make-directory "/tmp/publish"))
-
-  ;;   (defun bh/switch-to-scratch ()
-  ;;     (interactive)
-  ;;     (switch-to-buffer "*scratch*"))
-  ;;   (defun generate-random-password-for-template ()
-  ;;     (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
-  ;;            (fname (org-hugo-slug title))
-  ;;            (mapconcat #'identity
-  ;;                       `(,(concat "* TODO " title)
-  ;;                         ":PROPERTIES:"
-  ;;                         ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
-  ;;                         ":EXPORT_FILE_NAME: index"
-  ;;                         ":END:"
-  ;;                         "%?\n")                ;Place the cursor here finally
-  ;;                       "\n"))))
-
-  ;;   (defun capture-password ()
-  ;;     (concat "* %^{Name} :crypt: \n " (replace-regexp-in-string "\n" "" (shell-command-to-string "pwgen -ncsy 15 1"))))
-
-  ;;   (defun capture-pin ()
-  ;;     (setq pin/length (read-string "Length: "))
-  ;;     (setq pin/commmand (concat "python -c " "'from random import randint;" "print(randint(" (number-to-string (expt 10 (- (string-to-number pin/length) 1))) "," (number-to-string (- (expt 10 (string-to-number pin/length)) 1)) "))'"))
-  ;;     (concat "* %^{Name} :crypt: \n  " (replace-regexp-in-string "\n" "" (shell-command-to-string pin/commmand))))
-
-  (require 'epa-file)
-  (epa-file-enable)
-  (setq epa-pinentry-mode 'loopback)
-  (setq epa-file-encrypt-to (substring (shell-command-to-string "git config --global --get user.gpg") 0 -1))
-
-  (setq epa-file-select-keys nil)
-  (require 'org-crypt)
-  ;; (require 'org-drill)
-  ;; (require 'org-bullets)
-  ;; Encrypt before save
-  (org-crypt-use-before-save-magic)
-  ;; Encrypt todo's which is having crypt tag
-  (setq org-tags-exclude-from-inheritance (quote ("crypt")))
-
-  (setq org-crypt-key "virtualxi99@gmail.com")
+;;   ;; Standard key bindings
 
 
-  ;; Mark in dairy
-  (setq calendar-mark-diary-entries-flag t)
+;;   (if (> (string-to-number (org-version)) 9.1)
+;;       (require 'org-tempo))
 
-  ;; Appointment settings
-  (require 'appt)
-  (setq appt-time-msg-list nil
-        appt-display-diary nil
-        appt-display-interval (quote 5)
-        appt-display-format (quote window)
-        appt-message-warning-time (quote 15)
-        appt-display-mode-line nil)
-  (appt-activate t)
-  (display-time)
+;;   (defun bh/hide-other ()
+;;     (interactive)
+;;     (save-excursion
+;;       (org-back-to-heading 'invisible-ok)
+;;       (hide-other)
+;;       (org-cycle)
+;;       (org-cycle)
+;;       (org-cycle)))
 
-  ;; Bind org-agenda-to-appt to hook
-  (add-hook (quote org-agenda-finalize-hook)
-            (quote org-agenda-to-appt)
-            (org-agenda-columns))
+;;   (defun bh/set-truncate-lines ()
+;;     "Toggle value of truncate-lines and refresh window display."
+;;     (interactive)
+;;     (setq truncate-lines (not truncate-lines))
+;;     ;; now refresh window display (an idiom from simple.el):
+;;     (save-excursion
+;;       (set-window-start (selected-window)
+;;                         (window-start (selected-window)))))
 
-  ;; Include events from diary
-  (setq org-agenda-include-diary t)
+;;   (defun bh/make-org-scratch ()
+;;     (interactive)
+;;     (find-file "/tmp/publish/scratch.org")
+;;     (gnus-make-directory "/tmp/publish"))
+
+;;   (defun bh/switch-to-scratch ()
+;;     (interactive)
+;;     (switch-to-buffer "*scratch*"))
+;;   (defun generate-random-password-for-template ()
+;;     (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+;;            (fname (org-hugo-slug title))
+;;            (mapconcat #'identity
+;;                       `(,(concat "* TODO " title)
+;;                         ":PROPERTIES:"
+;;                         ,(concat ":EXPORT_HUGO_BUNDLE: " fname)
+;;                         ":EXPORT_FILE_NAME: index"
+;;                         ":END:"
+;;                         "%?\n")                ;Place the cursor here finally
+;;                       "\n"))))
+
+;;   (defun capture-password ()
+;;     (concat "* %^{Name} :crypt: \n " (replace-regexp-in-string "\n" "" (shell-command-to-string "pwgen -ncsy 15 1"))))
+
+;;   (defun capture-pin ()
+;;     (setq pin/length (read-string "Length: "))
+;;     (setq pin/commmand (concat "python -c " "'from random import randint;" "print(randint(" (number-to-string (expt 10 (- (string-to-number pin/length) 1))) "," (number-to-string (- (expt 10 (string-to-number pin/length)) 1)) "))'"))
+;;     (concat "* %^{Name} :crypt: \n  " (replace-regexp-in-string "\n" "" (shell-command-to-string pin/commmand))))
+
+(require 'epa-file)
+(setq epa-pinentry-mode 'loopback)
+(setq epa-file-encrypt-to (substring (shell-command-to-string "git config --global --get user.gpg") 0 -1))
+
+(setq epa-file-select-keys nil)
+(require 'org-crypt)
+;; (require 'org-drill)
+;; (require 'org-bullets)
+;; Encrypt before save
+(org-crypt-use-before-save-magic)
+;; Encrypt todo's which is having crypt tag
+(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+
+(setq org-crypt-key "virtualxi99@gmail.com")
 
 
-  (setq org-capture-templates `(
-                                ("t" "TODO" entry (file+headline ,(expand-file-name "inbox.org" org-directory) "TASKS")
-                                 "* TODO %i%?")
-                                ("T" "TICKLER" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "TICKLER")
-                                 "* %i%?%U")
-                                ;; ("a" "ARTICLE" plain (file capture-article-file)
-                                ;;  "#+TITLE: %^{Title}\n#+DATE: %<%Y-%m-%d>")
-                                ;; ("r", "PASSWORD" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "SECRETS")
-                                ;;  (function capture-password))
-                                ;; ("b", "BANK" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "SECRETS")
-                                ;;  (function capture-pin))
-                                ("o", "OBSERVATIONS" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "OBSERVATIONS")
-                                 "* %^{Title} :@note:\n** %^{Description}")
-                                ("v" "VOCABULARY" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "VOCABULARY")
-                                 "* %^{Word} :drill:@note:@vocabulary: \n %t\n %^{Extended word (may be empty)} \n** Answer: \n%^{The definition}")
-                                ("f" "FIXNEEDED" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "FIX NEEDED")
-                                 "* %^{Subject} :@issue: \n** %^{Description}")
-                                ("n" "NOTES" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "NOTES")
-                                 "* %^{Title} :@note: \n** %^{Description}")
-                                ("q" "QUESTIONS" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "QUESTIONS")
-                                 "* %^{Title} :drill:@question: \n  %^{Question} \n** Answer: \n   %^{Answer}")
-                                ("p" "PROTOCOL" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "INBOX")
-                                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
-                                ("L" "PROTOCOL LINK" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "INBOX")
-                                 "* %?[[%:link][%:description]] \nCaptured on: %U")))
+;; Mark in dairy
+(setq calendar-mark-diary-entries-flag t)
 
-  (add-hook (quote org-after-todo-statistics-hook) (lambda (n-done n-not-done)
-                                                     (let (org-log-done org-log-states)   ; turn off logging
-                                                       (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
+;; Appointment settings
+(require 'appt)
+(setq appt-time-msg-list nil
+      appt-display-diary nil
+      appt-display-interval (quote 5)
+      appt-display-format (quote window)
+      appt-message-warning-time (quote 15)
+      appt-display-mode-line nil)
+(appt-activate t)
+(display-time)
 
-  (defun generate-password ()
-    (interactive)
-    (let ((x (shell-command-to-string "pwgen -y 15 1")))
-      (insert x)))
+;; Bind org-agenda-to-appt to hook
+;; (add-hook (quote org-agenda-finalize-hook)
+;;           (quote org-agenda-to-appt)
+;;           (org-agenda-columns))
 
-  ;; (add-hook 'org-capture-mode-hook (lambda ()
-  ;;                                    (local-set-key (kbd "C-c p") 'generate-password)))
+;; Include events from diary
+(setq org-agenda-include-diary t)
 
-  ;; (defun harshaqq/org-mode-hook ()
-  ;;   (require 'org-bullets)  
-  ;;   (org-bullets-mode)
-  ;;   (flyspell-mode 1)
-  ;;   (org-tempo-setup))
 
-  ;; (defun harshaqq/org-capture-mode-hook ()
-  ;;   (org-bullets-mode))
+(setq org-capture-templates `(
+                              ("t" "TODO" entry (file+headline ,(expand-file-name "inbox.org" org-directory) "TASKS")
+                               "* TODO %i%?")
+                              ("T" "TICKLER" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "TICKLER")
+                               "* %i%?%U")
+                              ;; ("a" "ARTICLE" plain (file capture-article-file)
+                              ;;  "#+TITLE: %^{Title}\n#+DATE: %<%Y-%m-%d>")
+                              ;; ("r", "PASSWORD" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "SECRETS")
+                              ;;  (function capture-password))
+                              ;; ("b", "BANK" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "SECRETS")
+                              ;;  (function capture-pin))
+                              ("o", "OBSERVATIONS" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "OBSERVATIONS")
+                               "* %^{Title} :@note:\n** %^{Description}")
+                              ("v" "VOCABULARY" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "VOCABULARY")
+                               "* %^{Word} :drill:@note:@vocabulary: \n %t\n %^{Extended word (may be empty)} \n** Answer: \n%^{The definition}")
+                              ("f" "FIXNEEDED" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "FIX NEEDED")
+                               "* %^{Subject} :@issue: \n** %^{Description}")
+                              ("n" "NOTES" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "NOTES")
+                               "* %^{Title} :@note: \n** %^{Description}")
+                              ("q" "QUESTIONS" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "QUESTIONS")
+                               "* %^{Title} :drill:@question: \n  %^{Question} \n** Answer: \n   %^{Answer}")
+                              ("p" "PROTOCOL" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "INBOX")
+                               "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")
+                              ("L" "PROTOCOL LINK" entry (file+headline ,(expand-file-name "tickler.org" org-directory) "INBOX")
+                               "* %?[[%:link][%:description]] \nCaptured on: %U")))
 
-  ;; (add-hook 'org-capture-mode-hook 'harshaqq/org-capture-mode-hook)
-  ;; (add-hook 'org-mode-hook 'harshaqq/org-mode-hook)
+(add-hook (quote org-after-todo-statistics-hook) (lambda (n-done n-not-done)
+                                                   (let (org-log-done org-log-states)   ; turn off logging
+                                                     (org-todo (if (= n-not-done 0) "DONE" "TODO")))))
 
-  (add-hook 'org-shiftup-final-hook 'windmove-up)
-  (add-hook 'org-shiftleft-final-hook 'windmove-left)
-  (add-hook 'org-shiftdown-final-hook 'windmove-down)
-  (add-hook 'org-shiftright-final-hook 'windmove-right)
+(defun generate-password ()
+  (interactive)
+  (let ((x (shell-command-to-string "pwgen -y 15 1")))
+    (insert x)))
 
-  (require 'org-protocol)
+;; (add-hook 'org-capture-mode-hook (lambda ()
+;;                                    (local-set-key (kbd "C-c p") 'generate-password)))
 
-  (when (boundp 'org-plantuml-jar-path)
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((plantuml . t))))
+;; (defun harshaqq/org-mode-hook ()
+;;   (require 'org-bullets)  
+;;   (org-bullets-mode)
+;;   (flyspell-mode 1)
+;;   (org-tempo-setup))
 
-  (add-hook 'org-babel-after-execute-hook #'org-redisplay-inline-images)
+;; (defun harshaqq/org-capture-mode-hook ()
+;;   (org-bullets-mode))
 
-  (defun /org/org-mode-hook ()
-    (toggle-truncate-lines t)
-    (setq show-trailing-whitespace t))
-  (add-hook 'org-mode-hook #'/org/org-mode-hook)
+;; (add-hook 'org-capture-mode-hook 'harshaqq/org-capture-mode-hook)
+;; (add-hook 'org-mode-hook 'harshaqq/org-mode-hook)
 
-  (require-package 'ob-async)
-  (require 'ob-async)
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
 
-  (require-package 'org-bullets)
-  (setq org-bullets-bullet-list '("●" "○" "◆" "◇" "▸"))
-  (add-hook 'org-mode-hook #'org-bullets-mode)
+(require 'org-protocol)
 
-  (after 'ob-plantuml
-    (when (executable-find "npm")
-      (let ((default-directory (concat user-emacs-directory "/extra/plantuml-server/")))
-        (unless (file-exists-p "node_modules/")
-          (shell-command "npm install"))
+(when (boundp 'org-plantuml-jar-path)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((plantuml . t))))
 
-        (ignore-errors
-          (let ((kill-buffer-query-functions nil))
-            (kill-buffer "*plantuml-server*")))
-        (start-process "*plantuml-server*" "*plantuml-server*" "npm" "start"))
+(add-hook 'org-babel-after-execute-hook #'org-redisplay-inline-images)
 
-      (defun init-org/generate-diagram (uml)
-        (let ((url-request-method "POST")
-              (url-request-extra-headers '(("Content-Type" . "text/plain")))
-              (url-request-data uml))
-          (let* ((buffer (url-retrieve-synchronously "http://localhost:8182/svg")))
-            (with-current-buffer buffer
-              (goto-char (point-min))
-              (search-forward "\n\n")
-              (buffer-substring (point) (point-max))))))
+(defun /org/org-mode-hook ()
+  (toggle-truncate-lines t)
+  (setq show-trailing-whitespace t))
+(add-hook 'org-mode-hook #'/org/org-mode-hook)
 
-      (defun org-babel-execute:plantuml (body params)
-        (let* ((out-file (or (cdr (assoc :file params))
-                             (error "PlantUML requires a \":file\" header argument"))))
-          (let ((png (init-org/generate-diagram (concat "@startuml\n" body "\n@enduml"))))
-            (with-temp-buffer
-              (insert png)
-              (write-file out-file))))))))
+(require-package 'ob-async)
+(require 'ob-async)
+
+(require-package 'org-bullets)
+(setq org-bullets-bullet-list '("●" "○" "◆" "◇" "▸"))
+(add-hook 'org-mode-hook #'org-bullets-mode)
+
+(after 'ob-plantuml
+  (when (executable-find "npm")
+    (let ((default-directory (concat user-emacs-directory "/extra/plantuml-server/")))
+      (unless (file-exists-p "node_modules/")
+        (shell-command "npm install"))
+
+      (ignore-errors
+        (let ((kill-buffer-query-functions nil))
+          (kill-buffer "*plantuml-server*")))
+      (start-process "*plantuml-server*" "*plantuml-server*" "npm" "start"))
+
+    (defun init-org/generate-diagram (uml)
+      (let ((url-request-method "POST")
+            (url-request-extra-headers '(("Content-Type" . "text/plain")))
+            (url-request-data uml))
+        (let* ((buffer (url-retrieve-synchronously "http://localhost:8182/svg")))
+          (with-current-buffer buffer
+            (goto-char (point-min))
+            (search-forward "\n\n")
+            (buffer-substring (point) (point-max))))))
+
+    (defun org-babel-execute:plantuml (body params)
+      (let* ((out-file (or (cdr (assoc :file params))
+                           (error "PlantUML requires a \":file\" header argument"))))
+        (let ((png (init-org/generate-diagram (concat "@startuml\n" body "\n@enduml"))))
+          (with-temp-buffer
+            (insert png)
+            (write-file out-file)))))))
 
 (provide 'config-org)

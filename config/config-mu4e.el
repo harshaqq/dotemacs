@@ -1,5 +1,7 @@
-(after 'mu4e-mode
+(after 'mu4e
 
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+  (require 'mu4e)
   (require-package 'org-mu4e)
   (setq org-mu4e-link-query-in-headers-mode nil)
 
@@ -7,7 +9,7 @@
   (setq mail-user-agent 'mu4e-user-agent)
 
   ;; default
-  ;; (setq mu4e-maildir "~/Maildir")
+  (setq mu4e-maildir (expand-file-name "~/.mail/gmail"))
 
   (setq mu4e-drafts-folder "/[Gmail].Drafts")
   (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
@@ -26,13 +28,13 @@
   ;; the 'All Mail' folder by pressing ``ma''.
 
   (setq mu4e-maildir-shortcuts
-        '( ("/INBOX"               . ?i)
+        '( ("/Inbox"               . ?i)
            ("/[Gmail].Sent Mail"   . ?s)
            ("/[Gmail].Trash"       . ?t)
            ("/[Gmail].All Mail"    . ?a)))
 
   ;; allow for updating mail using 'U' in the main view:
-  (setq mu4e-get-mail-command "offlineimap")
+  (setq mu4e-get-mail-command "true")
 
   ;; something about ourselves
   (setq
