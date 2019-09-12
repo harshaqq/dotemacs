@@ -83,6 +83,9 @@
     (global-set-key [remap find-file] nil)
     (helm-mode -1)))
 
+;; (require-package 'helm-dictionary)
+
+
 (when (eq dotemacs-switch-engine 'helm)
   (/boot/delayed-init
    (/helm/activate-as-switch-engine t)))
