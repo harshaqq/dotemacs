@@ -1,3 +1,5 @@
+(setq evil-want-keybinding nil) ;; evil-collection will provide instead
+
 (defgroup dotemacs-evil nil
   "Configuration options for evil-mode."
   :group 'dotemacs
@@ -39,6 +41,14 @@
   :group 'dotemacs-evil)
 
 
+(require-package 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader ",")
+(evil-leader/set-key
+  "e"  'find-file
+  "b"  'switch-to-buffer
+  "k"  'kill-buffer)
+
 (setq evil-search-module 'evil-search)
 (setq evil-magic 'very-magic)
 
@@ -52,11 +62,12 @@
 
 (add-hook 'evil-jumps-post-jump-hook #'recenter)
 
-(setq evil-want-keybinding nil) ;; evil-collection will provide instead
 
 (require-package 'evil)
 (require 'evil)
 (evil-mode)
+
+(require-package 'evil-org)
 
 (cl-loop for mode in dotemacs-evil/emacs-state-minor-modes
          do (let ((hook (concat (symbol-name mode) "-hook")))
@@ -139,9 +150,6 @@
 
 (require-package 'evil-visualstar)
 (global-evil-visualstar-mode t)
-
-
-(require-package 'evil-numbers)
 
 
 (unless (display-graphic-p)

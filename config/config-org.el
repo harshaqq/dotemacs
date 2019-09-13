@@ -545,7 +545,7 @@
 
   (setq org-tag-alist '((:startgrouptag)
                         (:grouptags) ("@work" . ?w) ("@home" . ?h) ("@outdoor" . ?o) (:endgrouptag)
-                        (:grouptags) ("@high" . ?h) ("@medium" . ?m) ("@low" . ?l) (:endgrouptag)
+                        (:grouptags) ("@high" . ?1) ("@medium" . ?2) ("@low" . ?3) (:endgrouptag)
                         (:grouptags) ("crypt" . ?E) ("@lifestyle" . ?l) ("@vocabulary" . ?v) ("@programming" . ?p) (:endgrouptag)
                         (:grouptags) ("WAITING" . ?W) ("HOLD" . ?H) ("CANCELLED" . ?C)  ("FLAGGED" . ?F) ("WORK" . ?X) ("PERSONAL" . ?P) ("NOTE" . ?N)))
 
@@ -907,6 +907,6 @@
         (let ((png (init-org/generate-diagram (concat "@startuml\n" body "\n@enduml"))))
           (with-temp-buffer
             (insert png)
-            (write-file out-file)))))))
+            (write-file out-file))))))))
 
 (provide 'config-org)

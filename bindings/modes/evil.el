@@ -14,6 +14,7 @@
 
   (require-package 'key-chord)
   (key-chord-mode 1)
+  (setq key-chord-two-keys-delay 0.5)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
   (key-chord-define evil-insert-state-map "kj" 'evil-normal-state)
 
@@ -48,8 +49,8 @@
 
   (/bindings/define-keys evil-normal-state-map
     ("[ SPC" (bind (evil-insert-newline-above) (forward-line)))
-    ("] SPC" (bind (evil-insert-newline-below) (forward-line -1)))
     ("[ e" "ddkP")
+    ("] SPC" (bind (evil-insert-newline-below) (forward-line -1)))
     ("] e" "ddp")
     ("[ b" 'previous-buffer)
     ("] b" 'next-buffer)
