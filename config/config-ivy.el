@@ -79,4 +79,12 @@
 (when (eq dotemacs-switch-engine 'ivy)
   (/ivy/activate-as-switch-engine t))
 
+(require-package 'ivy-posframe)
+;; Different command can use different display function.
+(setq ivy-posframe-display-functions-alist
+      '((swiper          . ivy-posframe-display-at-point)
+        (complete-symbol . ivy-posframe-display-at-point)
+        (counsel-M-x     . ivy-posframe-display-at-window-bottom-left)
+        (t               . ivy-posframe-display)))
+(ivy-posframe-mode 1)
 (provide 'config-ivy)
