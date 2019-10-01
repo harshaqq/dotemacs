@@ -5,11 +5,9 @@
 (if (eq (display-graphic-p) t)
     (progn
       (require-package 'fancy-battery)
-      (fancy-battery-mode)
-      (menu-bar-mode -1)))
-
+      (add-hook 'after-init-hook #'fancy-battery-mode)))
 ;; Start dropbox daemon
-(if (file-directory-p "~/.dropbox-dist")
+(if (and (file-directory-p "~/.dropbox-dist") (not (string-equal "" (shell-command-to-string "pidof dropbox"))))
     (call-process-shell-command "~/.dropbox-dist/dropboxd&" nil 0))
 
 (provide 'config-general)

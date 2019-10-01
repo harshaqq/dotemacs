@@ -1,3 +1,4 @@
+(require 'server)
 (unless (server-running-p)
   (print "* Starting emacs server *")
   (server-start))

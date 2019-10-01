@@ -1,9 +1,9 @@
 (require-package 'emms)
 
-(after :emms
-  (add-hook 'emms-player-started-hook 'emms-show)
-  (setq emms-show-format "Playing: %s")
-  (emms-standard)
-  (emms-default-players))
+
+(add-hook 'emms-player-started-hook 'emms-show)
+(setq emms-show-format "Playing: %s")
+(emms-standard)
+(emms-default-players)
 
 (provide 'config-emms)
